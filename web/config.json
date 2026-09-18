@@ -1,0 +1,7 @@
+{
+  "stream": "camera",
+  "rtspHost": null,
+  "rtspPort": 8554,
+  "iceServers": [],
+  "mediaTransport": "tcp"
+}

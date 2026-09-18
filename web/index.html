@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Stream your camera to RTSP with live zoom controls.">
+  <title>Camera / Live</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <main>
+    <header><a class="wordmark" href="./">CAMERA<span>/</span>LIVE</a><span class="tag">BROWSER → RTSP</span></header>
+    <div class="intro"><p class="eyebrow">YOUR CAMERA, CONNECTED</p><h1>A live view.<br>A little closer.</h1><p>Send your camera to an RTSP player. Adjust the zoom as you go.</p></div>
+    <section class="studio" aria-label="Camera studio">
+      <div class="monitor">
+        <video id="preview" autoplay muted playsinline aria-label="Outgoing camera preview"></video>
+        <div id="placeholder"><span class="viewfinder" aria-hidden="true">＋</span><p>Your camera starts here.</p><small>Nothing is captured until you press Start.</small></div>
+        <div class="monitor-label"><span id="indicator"></span><span id="badge">STANDBY</span></div>
+        <span class="preview-label">OUTGOING PREVIEW</span>
+      </div>
+      <div class="controls">
+        <div class="control-heading"><span class="eyebrow">01 / BROADCAST</span><span id="status" role="status" aria-live="polite">Ready</span></div>
+        <p id="message">Rear camera preferred. Camera permission is required. Video only; no microphone.</p>
+        <div class="buttons"><button id="start" type="button">Start camera <span aria-hidden="true">↗</span></button><button id="stop" type="button" disabled>Stop</button></div>
+        <div class="zoom-heading"><label for="zoom">02 / ZOOM</label><output id="zoom-value" for="zoom">1.0×</output></div>
+        <input id="zoom" type="range" min="1" max="4" step="0.1" value="1" disabled aria-describedby="zoom-mode">
+        <p id="zoom-mode" class="small">Available after starting the camera.</p>
+        <p id="camera-auto" class="small" role="status" aria-live="polite">Automatic focus and exposure checked after starting.</p>
+        <p id="stream-quality" class="small" role="status" aria-live="polite">Transmission quality appears after connecting.</p>
+        <div class="destination"><label for="rtsp">03 / RTSP ADDRESS</label><div class="address"><input id="rtsp" type="text" readonly aria-describedby="address-help"><button id="copy" type="button" aria-label="Copy RTSP address">Copy</button></div><p id="address-help" class="small">In VLC, enable RTP over RTSP (TCP) and set network caching to 1000 ms.</p></div>
+      </div>
+    </section>
+    <footer><span>Powered by go2rtc</span><span>Streaming ends when you press Stop or leave this page.</span></footer>
+  </main>
+</body>
+</html>

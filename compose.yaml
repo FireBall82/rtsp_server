@@ -1,0 +1,18 @@
+services:
+  go2rtc:
+    image: alexxit/go2rtc:1.9.14
+    restart: unless-stopped
+    working_dir: /app
+    environment:
+      WEBRTC_HOST: ${WEBRTC_HOST:-127.0.0.1}
+      API_LISTEN: ":1984"
+      RTSP_LISTEN: ":8554"
+      WEBRTC_LISTEN: ":8555"
+    ports:
+      - "${BIND_HOST:-127.0.0.1}:1984:1984/tcp"
+      - "${BIND_HOST:-127.0.0.1}:8554:8554/tcp"
+      - "${BIND_HOST:-127.0.0.1}:8555:8555/tcp"
+      - "${BIND_HOST:-127.0.0.1}:8555:8555/udp"
+    volumes:
+      - ./go2rtc.yaml:/config/go2rtc.yaml:ro
+      - ./web:/app/web:ro

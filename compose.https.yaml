@@ -1,0 +1,11 @@
+services:
+  go2rtc:
+    environment:
+      API_TLS_LISTEN: ":8443"
+      API_TLS_CERT: /certs/server.crt
+      API_TLS_KEY: /certs/server.key
+    ports:
+      - "${BIND_HOST:-127.0.0.1}:8443:8443/tcp"
+    volumes:
+      - ./tls/server.crt:/certs/server.crt:ro
+      - ./tls/server.key:/certs/server.key:ro

@@ -1,0 +1,25 @@
+api:
+  listen: "${API_LISTEN:127.0.0.1:1984}"
+  tls_listen: "${API_TLS_LISTEN:}"
+  tls_cert: "${API_TLS_CERT:tls/server.crt}"
+  tls_key: "${API_TLS_KEY:tls/server.key}"
+  static_dir: "web"
+  # Register only the website and camera signaling, not management APIs.
+  allow_paths: ["/", "/api/webrtc"]
+
+rtsp:
+  listen: "${RTSP_LISTEN:127.0.0.1:8554}"
+
+webrtc:
+  listen: "${WEBRTC_LISTEN:127.0.0.1:8555}"
+  candidates:
+    - "${WEBRTC_HOST:127.0.0.1}:8555"
+  ice_servers: []
+  filters:
+    loopback: true
+
+streams:
+  camera: []
+
+log:
+  level: info

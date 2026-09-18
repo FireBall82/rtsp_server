@@ -1,0 +1,15 @@
+{
+  "name": "camera-go2rtc",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tests/media.test.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "test:layout": "node tests/camera-layout.mjs",
+    "test:backend": "node tests/backend.mjs",
+    "test:whip": "node tests/whip/check.mjs",
+    "test:transmission": "node tests/transmission.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "devDependencies": { "playwright": "1.61.1" }
+}
